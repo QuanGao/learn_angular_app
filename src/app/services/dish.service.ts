@@ -10,7 +10,16 @@ export class DishService {
 
   constructor() { }
 
-  getDishes():Dish[] {
+  getDishes(): Dish[] {
     return DISHES
   }
+
+  getDish(id: number):Dish[] {
+    return DISHES.filter((dish) => (dish.id === id))
+  }
+
+  getFeaturedDish():Dish {
+    return DISHES.filter( (dish) => dish.featured)[0];
+  }
+
 }
