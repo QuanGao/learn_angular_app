@@ -19,3 +19,15 @@ $background-pale: #D1C4E9;
 .btn-linkedin{color:#fff!important;background-color:#007bb6!important;}
 .btn-twitter{color:#fff!important;background-color:#55acee!important;}
 .btn-mail{color:#fff!important;background-color:#512DA8!important;}
+
+.footer-item {
+  padding: 10px
+}
+
+.footer-item:hover{
+  background: lightgray;
+}
+.active {
+  background: $background-dark;
+  color: white;
+}
