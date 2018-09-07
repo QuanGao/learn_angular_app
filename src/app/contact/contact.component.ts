@@ -19,6 +19,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.feedbackForm, 'this feedbackForm1')
   }
 
   createForm() {
@@ -34,10 +35,10 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
+  //weird that when console.log feedbackFrom, the value property in feedbackFrom are nulls while feedback has all data
+    console.log(this.feedbackForm, 'this feedbackForm2')
     this.feedback = this.feedbackForm.value;
-    console.log(this.feedback, 'this feed back')
-    console.log(this.feedbackForm, 'this feedbackForm')
-    console.log(this.contactType, 'this contactType')
-    this.feedbackForm.reset();     
+    console.log(this.feedback)  
+    this.feedbackForm.reset();   
   }
 }
