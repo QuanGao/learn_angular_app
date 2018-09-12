@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-
 
 @Component({
   selector: 'app-contact',
@@ -19,11 +18,32 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.feedbackForm, 'this feedbackForm1')
+    // @ViewChild('fform') feedbackFormDirective;
+
+
   }
 
   createForm() {
     this.feedbackForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+  
+      telNum: [0,Validators.required],
+      email: ['', Validators.required],
+
+
+      agree: false,
+      contactType: 'None',
+      message: ''
+      
+    })
+  }
+
+  onSubmit() {
+  //weird that when console.log feedbackFrom, the value property in feedbackFrom are nulls while feedback has all data
+    this.feedback = this.feedbackForm.value;
+
+    this.feedbackForm.reset({
       firstName: '',
       lastName: '',
       telNum: 0,
@@ -31,14 +51,7 @@ export class ContactComponent implements OnInit {
       agree: false,
       contactType: 'None',
       message: ''
-    })
-  }
-
-  onSubmit() {
-  //weird that when console.log feedbackFrom, the value property in feedbackFrom are nulls while feedback has all data
-    console.log(this.feedbackForm, 'this feedbackForm2')
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback)  
-    this.feedbackForm.reset();   
+    });   
+    // this.feedbackFormDirective.resetForm();
   }
 }
