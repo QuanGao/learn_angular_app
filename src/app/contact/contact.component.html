@@ -43,25 +43,25 @@
     <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="firstName" placeholder="First Name" type="text" required>
+          <input matInput formControlName="firstName" placeholder="First Name" type="text">
           <mat-error *ngIf="feedbackForm.get('firstName').hasError('required') && feedbackForm.get('firstName').touched">
             First name is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
-            <input matInput formControlName="lastName" placeholder="Last Name" type="text" required>
+            <input matInput formControlName="lastName" placeholder="Last Name" type="text">
             <mat-error *ngIf="feedbackForm.get('lastName').hasError('required') && feedbackForm.get('lastName').touched">
               Last name is required
             </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
-            <input matInput formControlName="telNum" placeholder="Tel. #" type="tel" required>
+            <input matInput formControlName="telNum" placeholder="Tel. #" type="tel">
             <mat-error *ngIf="feedbackForm.get('telNum').hasError('required') && feedbackForm.get('telNum').touched">
               Tel. number is required
             </mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
-            <input matInput formControlName="email" placeholder="@" type="email" required>
+            <input matInput formControlName="email" placeholder="@" type="email">
             <mat-error *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched">
               Email is required
             </mat-error>
