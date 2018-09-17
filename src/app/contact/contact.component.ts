@@ -22,24 +22,24 @@ export class ContactComponent implements OnInit {
   }
 
   formErrors = {
-    'firstname': '',
-    'lastname': '',
-    'telnum': '',
+    'firstName': '',
+    'lastName': '',
+    'telNum': '',
     'email': ''
   }
 
   validationMessages = {
-    'firstname': {
+    'firstName': {
       'required': 'First name is required',
       'minlength': 'First name must be at least 2 characters long.',
       'maxlength': 'Frist name can not be more than 25 characters long.'
     },
-    'lastname': {
+    'lastName': {
       'required': 'Last name is required.',
       'minlength': 'Last name must be at least 2 characters long.',
       'maxlength': 'Last name can not be more than 25 characters long.'
     },
-    'telnum': {
+    'telNum': {
       'required': 'Tel. number is required.',
       'pattern': 'Tel. number must only contain numbers'
     },
@@ -53,7 +53,7 @@ export class ContactComponent implements OnInit {
     this.feedbackForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
-      telNum: [0, [Validators.required, Validators.pattern] ],
+      telNum: [0, [Validators.required, Validators.pattern('[0-9]+')] ],
       email: ['', [Validators.required, Validators.email] ],
       agree: false,
       contactType: 'None',
@@ -66,15 +66,22 @@ export class ContactComponent implements OnInit {
   }
 
   onValueChanged(data?: any) {
-    if (!this.feedbackForm){return;}
+    if (!this.feedbackForm){
+      console.log("!this.feedbackForm")
+      return;
+    }
     const form = this.feedbackForm;
     for (const field in this.formErrors) {
+      console.log("field: " + field)
       if(this.formErrors.hasOwnProperty(field)){
         this.formErrors[field] = '';
         const control = form.get(field);
+        console.log(control,)
         if (control && control.dirty && !control.valid){
           const messages = this.validationMessages[field];
+          console.log(messages);
           for(const key in control.errors){
+            console.log(key,)
             this.formErrors[field] += messages[key] + ' '
           }
         }

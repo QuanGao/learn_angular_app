@@ -14,7 +14,7 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h3 *ngIf="dish">
+          <h3>
             {{ dish.name | uppercase}}
           </h3>
         </mat-card-title>
@@ -41,7 +41,7 @@
   </div>
 
   <div fxFlex="40">    
-    <mat-list *ngIf="dish.comments">
+    <mat-list *ngIf="dish">
       <h3>Comments</h3>
       <mat-list-item *ngFor="let comment of dish.comments">      
         <p matLine>{{ comment.comment }}</p>
